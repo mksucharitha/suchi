@@ -16,6 +16,9 @@ public class Supplier {
 	private int id; 
 	private String name;
 	private String description;
+	private String address;
+	private String products;
+	
 
 public int getId() {
 		return id;
@@ -35,5 +38,17 @@ public String getDescription() {
 public void setDescription(String description) {
 		this.description = description;
 	}
+public String getAddress() {
+	return address;
+}
+public void setAddress(String address) {
+	this.address = address;
+}
+public String getProducts() {
+	return products;
+}
+public void setProducts(String products) {
+	this.products = products;
+}
 	
 }

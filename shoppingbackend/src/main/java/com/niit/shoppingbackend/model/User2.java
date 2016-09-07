@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
 import org.springframework.stereotype.Component;
 @Table
 @Entity
@@ -18,11 +21,13 @@ public class User2 {
 	private String lastname;
 		
 	private String address;
-	
+	@Size(min=1,message="invalid email address")
+	@Email(message="invalid email address")
 	private String emailid;
 	
-	
+	@Size(min=4,message="Name  must be at leat 4 characters!")
 	private String username;
+	@Size(min=6,message="password must be at least  6 characters")
 	private String password;
 	private String role;
 	private boolean enabled;
@@ -80,6 +85,7 @@ public class User2 {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
 	
 
 	

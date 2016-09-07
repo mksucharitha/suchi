@@ -8,9 +8,11 @@
 <title>MY WEBPAGE</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+ <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic' rel='stylesheet' type='text/css'>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
@@ -18,12 +20,24 @@
 
 <style>
 h1 {
-	font-size: 110px;
-	color:#F778A1;
+font-family: 'Pacifico', cursive;
+	font-size: 80px;
+	color:#C35817;
 }
-
+h2{
+   font-family: 'Open Sans Condensed', sans-serif;
+   font-size:30px;
+   color:#8D38C9;
+   
+   }
 body {
-	background-color:#79F7CF;
+	background-image:url("resources/images/s8.jpg");
+	 background-repeat: no-repeat;
+    background-attachment: fixed;
+   -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover; 
 	padding:50px;
 	padding-top:0;
 }
@@ -32,19 +46,27 @@ ul {
 	list-style-type: none;
 	margin: 0;
 	padding-left:20px;
-	background-color: #3890ae;
+	background-color:#b8375c;
 }
 
 li a {
-	font-size: 20px;
+font-family: 'Dancing Script', cursive;
+	font-size:30px;
 	color: white;
 	padding:50px;
 	text-decoration: none;
 }
 
-.carousel-inner>.item>img, .carousel-inner>.item>a>img {
-	width:50%;
+.carousel-inner>.item>img{
+width:640px;
+ height:360px; 
+
+} .carousel-inner>.item>a>img {
 	margin: auto;
+}
+.footer{
+text-align:left;
+font-size:20px;
 }
 </style>
 </head>
@@ -54,6 +76,10 @@ li a {
 			<i>Chocos-world</i>
 		</h1>
 </center>
+<center><h2>${welcome1}</h2></center>
+<center><h2>${welcome}</h2></center>
+<center><h2>${logout}</h2></center>
+<center><h2>${signout}</h2></center>
 	<div class="container-fluid">
 		<ul class="nav nav-pills">
 			<li><a href="mainpage"><span
@@ -61,21 +87,34 @@ li a {
 			<li class="dropdown"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#"> categories <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="#">dark choclates</a></li>
-					<li><a href="#">white choclates</a></li>
-					<li><a href="#">semi sweet choclates</a></li>
+					<li><a href="mainview?cname=darkchoclates">dark choclates</a></li>
+					<li><a href="mainview?cname=semisweet choclates">semisweet choclates</a></li>
+					<li><a href="mainview?cname=milk chocolates">milk choclates</a></li>
 				</ul></li>
 			<li><a href="contact">Contact</a></li>
 			<li><a href="about">About us</a></li>
-			<li><a href="adminlogin">Admin</a></li>
+			
+			
 			<ul class="nav navbar-nav navbar-right">
+			
 				<u1 class="nav nav-pills">
+				<c:choose>
+             <c:when test="${empty loggedInUser}">  
+				
 				<li><a href="login"><span
-						class="glyphicon glyphicon-log-in"></span>login</a></li>
-				<li><a href="reg"><span class="glyphicon glyphicon-user">newuser</a></li>
+						class="glyphicon glyphicon-log-in"></span> login</a></li>
+				<li><a href="registration.obj"><span class="glyphicon glyphicon-user"></span> newuser</a></li>
+				</c:when>  
+
+ <c:when test="${not empty loggedInUser}">
+      
+      <li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+ 
+
+      </c:when>
+      </c:choose> 
 			</ul>
 		</ul>
-</ul>
 	</div>
 	<div class="container">
 		<font color="black"> <br>
@@ -91,29 +130,21 @@ li a {
 				<div class="carousel-inner" role="listbox">
 
 					<div class="item active">
-						<img src=<c:url value="/resources/images/slide1.jpg"/>
-							alt="Dark choclates" width="320" height="240">
-						<div class="carousel-caption">
-							<a href="" data-toggle="tooltip" title="Dark choclates">dark
-								choclates</a>
-						</div>
+						<img class="img-responsive center-block" src=<c:url value="/resources/images/slide1.jpg"/>
+							>
+						
 					</div>
 
 					<div class="item">
-						<img src=<c:url value="/resources/images/slide2.jpg"/>
+						<img class="img-responsive center-block" src=<c:url value="/resources/images/slide2.jpg"/>
 							alt="white choclates" width="320" height="240">
-						<div class="carousel-caption">
-							<a href="" data-toggle="tooltip" title="white choclates!">white
-								choclates</a>
-						</div>
+						
 					</div>
 
 					<div class="item">
-						<img src=<c:url value="/resources/images/slide3.jpg"/>
+						<img class="img-responsive center-block" src=<c:url value="/resources/images/slide3.jpg"/>
 							alt="cadbury choclates" width="320" height="240">
-						<div class="carousel-caption">
-							<a href="" data-toggle="tooltip" title="cadbury choclates!"></a>
-						</div>
+						
 					</div>
 				</div>
 
@@ -129,5 +160,11 @@ li a {
 				</a>
 			</div>
 		</font>
+<footer>
+<div class="navbar-right" color="white">
+© 2016 - All Rights with Chocos-world
+</div>
+</footer>
+</div>		
 </body>
 </html>

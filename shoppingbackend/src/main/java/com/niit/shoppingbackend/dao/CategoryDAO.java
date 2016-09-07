@@ -9,5 +9,8 @@ public interface CategoryDAO {
 	public Category get(int id);
 	public void saveOrUpdate(Category category);
 	public void delete(int id);
+	public Category getByName(String name);
+	
+	
 
 }

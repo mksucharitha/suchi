@@ -8,16 +8,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	 <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400italic' rel='stylesheet' type='text/css'>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style>
 h1 {
-	font-size: 110px;
-	color:#0000A0;
+font-family: 'Pacifico', cursive;
+	font-size: 80px;
+	color:#EE9A4D;
 }
    h2{
+   font-family: 'Playfair Display', serif;
    font-size:40px;
    color:#954535;
    
@@ -36,15 +41,22 @@ ul {
 }
 
 li a {
-	font-size: 20px;
+font-family: 'Dancing Script', cursive;
+	font-size: 30px;
 	color: white;
 	padding:50px;
 	text-decoration: none;
 }
 
 .h2 small {
+ font-family: 'Playfair Display', serif;
 font-size: 24px;
 color:black;
+}
+.footer{
+text-align:left;
+color:white;
+font-size:20px;
 }
 </style>
 </head>
@@ -62,17 +74,16 @@ color:black;
 				data-toggle="dropdown" href="#"> categories <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="#">dark choclates</a></li>
-					<li><a href="#">white choclates</a></li>
-					<li><a href="#">semi sweet choclates</a></li>
+					<li><a href="#">couverature</a></li>
+					<li><a href="#">milk choclates</a></li>
 				</ul></li>
 			<li><a href="contact">Contact</a></li>
 			<li><a href="about">About us</a></li>
-			<li><a href="admin">Admin</a></li>
 			<ul class="nav navbar-nav navbar-right">
 				<u1 class="nav nav-pills">
 				<li><a href="login"><span
-						class="glyphicon glyphicon-log-in"></span>login</a></li>
-				<li><a href="reg">new user</a></li>
+						class="glyphicon glyphicon-log-in"></span> login</a></li>
+				<li><a href="reg"><span class="glyphicon glyphicon-user"></span> newuser</a></li>
 			</ul>
 			</u1>
 		</ul>
@@ -149,6 +160,13 @@ Karve Nagar, Pune - 411052<br>
             </form>
         </div>
     </div>
+    <footer>
+<div class="navbar-right">
+© 2016 - All Rights with Chocos-world
 </div>
+</footer>
+</div>
+</body> 
+</html>
 
 	

@@ -8,25 +8,52 @@
 <title>MY WEBPAGE</title>
 <meta name="description" content="Hello Word">
 	 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	 <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400italic' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic' rel='stylesheet' type='text/css'>
+
+	
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="css2.css">
+
 	 <style>
 	h1 {
-	font-size: 110px;
+	font-family: 'Pacifico', cursive;
+	font-size: 80px;
 	color:#40BFFF;
 }
    h2{
+   font-family: 'Open Sans Condensed', sans-serif;
    font-size:40px;
    color:#8D38C9;
    
    }
+    h3{
+    font-family: 'Playfair Display', serif;
+   font-size:40px;
+   color:#F778A1;
+   
+   }
+    h4{
+    font-family: 'Playfair Display', serif;
+   font-size:40px;
+   color:#F70D1A;
+   
+   }
+   
 
 body {
-	background-color:#FFE5B4;
+	background-image:url("resources/images/jj.jpg");
+	 background-repeat: no-repeat;
+    background-attachment: fixed;
+   -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover; 
 	padding:50px;
 	padding-top:0;
 }
@@ -38,7 +65,8 @@ ul {
 }
 
 li a {
-	font-size: 20px;
+font-family: 'Dancing Script', cursive;
+	font-size: 30px;
 	color: white;
 	padding:50px;
 	text-decoration: none;
@@ -55,6 +83,9 @@ li a {
   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
 }
 	
+.footer{
+text-align:left;
+font-size:20px;
 }
 </style>
 </head>
@@ -72,42 +103,43 @@ li a {
 				data-toggle="dropdown" href="#"> categories <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="#">dark choclates</a></li>
-					<li><a href="#">white choclates</a></li>
-					<li><a href="#">semi sweet choclates</a></li>
+					<li><a href="#">semisweet choclates</a></li>
+					<li><a href="#">milk choclates</a></li>
 				</ul></li>
 			<li><a href="contact">Contact</a></li>
 			<li><a href="about">About us</a></li>
-			<li><a href="admin">Admin</a></li>
+			
 			<ul class="nav navbar-nav navbar-right">
 				<u1 class="nav nav-pills">
 				<li><a href="login"><span
-						class="glyphicon glyphicon-log-in"></span>login</a></li>
-				<li><a href="reg"><span class="glyphicon glyphicon-user">newuser</a></li>
+						class="glyphicon glyphicon-log-in"></span> login</a></li>
+				<li><a href="reg"><span class="glyphicon glyphicon-user"></span> newuser</a></li>
 			</ul>
 		</ul>
-</ul>
 	</div>
-<centre>
+
 	<div class="container">
 
+<center><h4>${welcome}</h4></center>
+<center><h3>${regsuccess}</h3></center>
 <div class="row" style="margin-top:20px">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-		<form role="form">
+		<form role="form" action="checklogin">
 			<fieldset>
-				<h2>Please Login In</h2>
+				<center><h2>Please Login In</h2></center>
 				<hr class="colorgraph">
 				<div class="form-group">
-                    <input type="text" name="username" id="username" class="form-control input-lg" placeholder="enter your user name">
+                    <input type="text" name="username" id="username" class="form-control input-lg" placeholder="enter your user name"required="true">
 				</div>
 				<div class="form-group">
-                    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
+                    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" required="true">
 				</div>
 				<label class="checkbox pull-left">
               <input type="checkbox" value="remember-me">
                                                    Remember me
                                      </label>
                     
-					<a href="" class="btn btn-link pull-right">Forgot Password?</a>
+					
 				
 				
 				<div class="row">
@@ -116,12 +148,17 @@ li a {
 					</div>
 					
 				</div>
+<%-- <input type="hidden" name="${_csrf.parametername }" value="${_csrf.token }">	 --%>			
 			</fieldset>
 		</form>
 	</div>
 </div>
+<footer>
+<div class="navbar-right" color="white">
+© 2016 - All Rights with Chocos-world
+</div>
+</footer>
 
 </div>	
-</center>
 </body>
 </html>

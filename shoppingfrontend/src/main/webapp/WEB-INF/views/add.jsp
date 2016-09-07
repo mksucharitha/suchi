@@ -7,30 +7,96 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Category add</title>
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400italic' rel='stylesheet' type='text/css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<title>Category add</title>
+
+<style>
+h3{
+    font-family: 'Playfair Display', serif;
+   font-size:40px;
+   color:#F778A1;
+   
+   }
+   body {
+	background-image:url("resources/images/k7.jpg");
+	 background-repeat: no-repeat;
+    background-attachment: fixed;
+   -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover; 
+	padding:50px;
+	padding-top:0;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding-left:20px;
+	background-color: #b8375c;
+}
+
+
+li a {
+font-family: 'Dancing Script', cursive;
+
+	font-size: 30px;
+	color: white;
+	text-decoration: none;
+}
+</style>
 
 </head>
+ 
 
+ 
 <body>
- 
-<%@include file="admin.jsp" %>
- 
+
 
 <div class="container">
-<h3>plz fill ur details</h3>
- <form:form action="category" method="post" commandName="category">
-
+<h2>${category.name }</h2>
+<ul class="nav nav-pills">
+				<li><a href="#">admin</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="add">AddCategory</a></li>
+							<li><a href="view2">ViewCategory</a></li>
+						</ul></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Products<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="pradd">AddProduct</a></li>
+							<li><a href="view4">ViewProduct</a></li>
+						</ul></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Suppliers <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="sadd">AddSupplier</a></li>
+							<li><a href="view6">ViewSupplier</a></li>
+						</ul></li>
+				<ul class="nav nav-pills navbar-right">
+					<li><a href="signout"> Signout</a></li>
+				</ul>
+				</ul>
+<h3>ADD CATEGORIES!!!!!!!!!</h3>
+ <form:form action="view1" method="post" commandName="category">
+<div class="form-group">
+      <label for="id">ID</label>
+      <form:input path="id"  class="form-control" readonly="true" required="true"/>
+    </div>
     <div class="form-group">
       <label for="name">CATEGORY NAME</label>
-      <form:input path="name" id="name" class="form-control" />
+      <form:input path="name" id="name" value="${category.name }" class="form-control" required="true"/>
     </div>
      <div class="form-group">
       <label for="description">CATEGORY DESCRIPTION</label>
-      <form:input path="description" id="description" class="form-control" />
+      <form:input path="description" id="description" class="form-control" required="true"/>
     </div>
       
     <button type="submit" class="btn btn-primary">SUBMIT</button>

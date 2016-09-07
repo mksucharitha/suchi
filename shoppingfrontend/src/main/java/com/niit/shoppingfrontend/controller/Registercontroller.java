@@ -2,8 +2,14 @@ package com.niit.shoppingfrontend.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
 import org.apache.maven.model.Model;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+/*import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;*/
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,8 +34,16 @@ private User2 user;
 		System.out.println(userd);
 	}
 	@RequestMapping(value ="checklogin")
-	public ModelAndView check(@RequestParam("username")String username,@RequestParam("password")String password) 
-{
+	public ModelAndView gotocheck(@RequestParam("username")String username,@RequestParam("password")String password,HttpSession session) {
+	/*public ModelAndView gotosecure(@RequestParam(value="error",required=false) String error,Model model,Authentication auth)@RequestParam("username")String username,@RequestParam("password")String password,HttpSession session) 
+ for(GrantedAuthority authe:auth.getAuthorities()){
+	String role=authe.getAuthority();
+	 System.out.println(role);
+ }
+ if(error!=null)
+ {
+	 String arg="username and password do not exists please login as new user";*/
+	 
 		System.out.println(username);
 		System.out.println(password);
 		boolean isValidUser=userd.isValidUser(username,password);
@@ -38,7 +52,7 @@ private User2 user;
 			
 			User2 list=userd.get(username);
 			System.out.println(list);
-			System.out.println("Role"+list.getRole());
+			session.setAttribute("loggedInUser",list.getUsername());
 			//System.out.println(role);
 			String role=list.getRole();
 			if(role.equals("admin")){
@@ -46,7 +60,8 @@ private User2 user;
 			mv.addObject("welcome", "Welcome admin");
 			return mv;}
 			else{
-				ModelAndView mv=new ModelAndView("mainapge");
+				ModelAndView mv=new ModelAndView("mainpage");
+				mv.addObject("welcome1","welcome"+list.getUsername());
 				mv.addObject("welcome", "You have Succsfully Logged IN-happy shopping");
 				return mv;
 			}
@@ -62,50 +77,57 @@ private User2 user;
 }
 
 	@RequestMapping(value ="register",method=RequestMethod.POST)
-	public ModelAndView regpost(@ModelAttribute("user") User2 user, BindingResult result,Model model) {
+	public ModelAndView regpost(@Valid@ModelAttribute("user2") User2 user, BindingResult result,Model model) {
+		if(result.hasErrors()){
+			ModelAndView model1=new ModelAndView("reg");
+			return model1;
+		}
 	userd.saveOrUpdate(user);
 		ModelAndView modelAndView = new ModelAndView("login");
 		modelAndView.addObject("regsuccess", "Registered Successfully...!!!&please login");   
 		return modelAndView;
 	}
-	/*
-	@RequestMapping("/login")
+	
+	/*@RequestMapping("/login")
 	public ModelAndView login(){
 		ModelAndView modelAndView = new ModelAndView("login");
-		modelAndView.addObject("user", usert);
+		modelAndView.addObject("user", user);
 		//modelAndView.addObject("isuserClickedLoginHere", "true"); 
 		return modelAndView;
 	}*/
 	
-	/*@RequestMapping(value ="login",method=RequestMethod.POST)
-	public <HttpSession> ModelAndView loginpost(@RequestParam("username")String username,@RequestParam("password")String password, HttpSession session) {
 	
-		ModelAndView modelAndView = new ModelAndView("main1");
-		boolean isValidUser=userd.isValidUser(username,password);
-		if(isValidUser==true)
-		{
-			//usert=userd.get(username);
-			//session.setAttribute("loggedInUser",usert.getUsername());
-			if(usert.getRole()=="admin")
-			{	
-				modelAndView.addObject("isAdmin","true");
-			
-			}else{
-				modelAndView.addObject("isAdmin","false");
-				modelAndView.addObject("loginsuccess", "LoggedIn Successfully");
-				
-				}	
-		}
-		else{
-			modelAndView.addObject("invalidCredentials","tre");
-			modelAndView.addObject("errorMessage","Invalid Credentials..! Not Yet Registered");
-			
-			
-			}
-	return modelAndView;
+
+	@RequestMapping(value ="logout")
+	public ModelAndView logout(HttpServletRequest request,HttpSession session){
+		ModelAndView modelAndView = new ModelAndView("mainpage");
+		session.invalidate();
+		session=request.getSession(true);
+		modelAndView.addObject("loggedOut", "true");
+		modelAndView.addObject("logout", "Loggedout Successfully");
+		return modelAndView;
 	}
 	
-	*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value ="signout")
+	public ModelAndView signout(HttpServletRequest request,HttpSession session){
+		ModelAndView modelAndView = new ModelAndView("mainpage");
+		session.invalidate();
+		session=request.getSession(true);
+		/*modelAndView.addObject("loggedOut", "true");*/
+		modelAndView.addObject("signout", "signout Successfully");
+		return modelAndView;
+	}
 }
 
 
